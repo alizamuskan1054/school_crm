@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-
+from django.http import HttpResponse
 # Import views from accounts app
 from accounts.views import RegisterView, UserProfileView
 
@@ -38,3 +38,10 @@ urlpatterns = [
 # if settings.DEBUG:
 #     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+def favicon(request):
+    return HttpResponse(status=204)
+
+urlpatterns += [
+    path('favicon.ico', favicon),
+    path('favicon.png', favicon),
+]
