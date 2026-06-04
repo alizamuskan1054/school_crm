@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 import dj_database_url
+import cloudinary
+import cloudinary_storage
 
 from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-dev-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -50,6 +52,10 @@ INSTALLED_APPS = [
     'teachers',
     'classrooms',
     'attendance',
+]
+INSTALLED_APPS += [
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -105,6 +111,12 @@ DATABASES = {
         conn_max_age=600
     )
 }
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'devkaxk3x',
+    'API_KEY': '193928726222215',
+    'API_SECRET': 'lCnk0ScVw0VT4W3RXNISCdDRjRE',
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Custom User Model definition for Role-Based Access Control (RBAC)
 AUTH_USER_MODEL = 'accounts.CustomUser'
 # Django REST Framework Configurations
