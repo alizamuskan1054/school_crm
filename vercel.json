@@ -1,15 +1,22 @@
 {
-  "version": 2,
   "builds": [
     {
       "src": "school_crm/wsgi.py",
       "use": "@vercel/python",
-      "config": { "runtime": "python3.11" }
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.11" }
+    },
+    {
+      "src": "manage.py",
+      "use": "@vercel/python"
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "(.*)",
       "dest": "school_crm/wsgi.py"
     }
   ]
