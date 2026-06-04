@@ -1,7 +1,7 @@
 {
   "builds": [
     {
-      "src": "school_crm/wsgi.py",
+      "src": "school_crm/school_crm/wsgi.py",
       "use": "@vercel/python",
       "config": { "maxLambdaSize": "15mb", "runtime": "python3.11" }
     },
@@ -17,7 +17,7 @@
     },
     {
       "src": "(.*)",
-      "dest": "school_crm/wsgi.py"
+      "dest": "school_crm/school_crm/wsgi.py"
     }
   ]
 }
