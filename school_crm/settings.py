@@ -12,8 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 import dj_database_url
-import cloudinary
-import cloudinary_storage
+
 
 from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -53,10 +52,7 @@ INSTALLED_APPS = [
     'classrooms',
     'attendance',
 ]
-INSTALLED_APPS += [
-    'cloudinary',
-    'cloudinary_storage',
-]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
