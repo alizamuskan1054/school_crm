@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from django.http import HttpResponse
+from django.http import JsonResponse
 # Import views from accounts app
 from accounts.views import RegisterView, UserProfileView
 
@@ -22,6 +23,7 @@ router.register(r'students', StudentViewSet, basename='student')
 router.register(r'attendance', AttendanceViewSet, basename='attendance')
 
 urlpatterns = [
+     path('', home), 
     path('admin/', admin.site.urls),
     
     # 2. Manual Authentication Endpoints (Matching the exact PDF requirement specification)
@@ -45,3 +47,7 @@ urlpatterns += [
     path('favicon.ico', favicon),
     path('favicon.png', favicon),
 ]
+def home(request):
+    return JsonResponse({
+        "message": "School CRM API is running 🚀"
+    })
