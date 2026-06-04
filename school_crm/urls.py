@@ -6,6 +6,10 @@ from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from django.http import HttpResponse
 from django.http import JsonResponse
+def home(request):
+    return JsonResponse({
+        "message": "School CRM API is running 🚀"
+    })
 # Import views from accounts app
 from accounts.views import RegisterView, UserProfileView
 
@@ -47,7 +51,3 @@ urlpatterns += [
     path('favicon.ico', favicon),
     path('favicon.png', favicon),
 ]
-def home(request):
-    return JsonResponse({
-        "message": "School CRM API is running 🚀"
-    })
