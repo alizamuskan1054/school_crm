@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-dev-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -107,11 +107,7 @@ DATABASES = {
         conn_max_age=600
     )
 }
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'devkaxk3x',
-    'API_KEY': '193928726222215',
-    'API_SECRET': 'lCnk0ScVw0VT4W3RXNISCdDRjRE',
-}
+
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Custom User Model definition for Role-Based Access Control (RBAC)
 AUTH_USER_MODEL = 'accounts.CustomUser'
@@ -180,7 +176,8 @@ STATICFILES_DIRS = [
 ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = '/tmp/media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
