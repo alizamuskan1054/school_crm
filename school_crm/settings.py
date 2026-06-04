@@ -25,14 +25,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-u9#m)8p1o&3$0w-e#c+mor)2nixa+3yrjm&!#*0+m&6q1-gl)5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['school-crm-wf1n.vercel.app', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -97,10 +98,8 @@ WSGI_APPLICATION = 'school_crm.wsgi.application'
 #     }
 # }
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://neondb_owner:npg_PKnZs60fXvyh@ep-lively-voice-apqoap47-pooler.c-7.us-east-1.aws.neon.tech/neondb?sslmode=require',
-        conn_max_age=600,
-        ssl_require=True
+    'default': dj_database_url.parse(
+        os.environ.get("DATABASE_URL")
     )
 }
 # Custom User Model definition for Role-Based Access Control (RBAC)
